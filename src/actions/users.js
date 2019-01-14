@@ -1,7 +1,7 @@
 //inside src/actions/users.js
 import {
     RECEIVE_USERS,
-    SET_AUTHED_USER
+    SET_AUTHED_USER, SAVE_USER_ANSWER
 } from '../constants/constants'
 
 export function receive_users(users){
@@ -18,3 +18,9 @@ export function setLoginUser(id){
     }
 }
 
+export function saveUserAnswer(user,qid,answer){
+    return {
+        type: SAVE_USER_ANSWER,
+        qid, user, answer
+    }
+}

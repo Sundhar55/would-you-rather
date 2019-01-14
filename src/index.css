@@ -11,7 +11,7 @@ a {
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 10px;
 }
@@ -83,10 +83,18 @@ li {
   margin: 10px;
 }
 
+.polldetail {
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  margin : 0 auto;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+}
 .poll {
   width: 100%;
   max-width: 400px;
-  max-height: 280px;
+  max-height: 250px;
   
   padding: 10px;
   display: flex;

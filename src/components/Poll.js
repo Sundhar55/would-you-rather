@@ -2,6 +2,7 @@
 import React from 'react'
 import {Link, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
+import WouldYou from './WouldYou'
 
 class Poll extends React.Component{
     submitPoll=(e)=>{
@@ -24,7 +25,6 @@ class Poll extends React.Component{
         }
         console.log('id in oll ' , id1)
         
-        const name = "sarah"
         var imgSrc = "/images/tyler.jpg"
         if(question.author === "sarahedo"){
             imgSrc = "/images/sarah.jpg"
@@ -37,14 +37,15 @@ class Poll extends React.Component{
                     
                 <div className="poll-info">
                     <h4 className="center">{question.author} asks: </h4>
+                    <WouldYou />
                     <div className="">
-                        <div className = "right">
-                            <span className="right">{question.optionOne.text}</span>
-                            <span> votes :  {question.optionOne.votes.length}</span>
+                        <div className = "center">
+                            <label className="center">{question.optionOne.text}...</label>
+                            
                         </div>
-                        <div className = "option">
-                            <span>{question.optionTwo.text}</span>
-                            <span> votes :  {question.optionTwo.votes.length}</span>
+                        <div className = "center">
+                            <span>{question.optionTwo.text}...</span>
+                            
                         </div>
                         {id1 !== undefined 
                         ?  <button className ="btn" id="submitPoll" onClick={(e)=>this.submitPoll(e)}>Submit</button>                          

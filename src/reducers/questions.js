@@ -1,7 +1,8 @@
 //inside src/reducers/questions.js
 import {
     RECEIVE_QUESTIONS,    
-    ADD_QUESTION
+    ADD_QUESTION,
+    SAVE_QUES_ANSWER
 } from '../constants/constants'
 
 export default function users(state={},action){
@@ -18,6 +19,26 @@ export default function users(state={},action){
                 ...state,
                  [action.question.id]:action.question
             }
+        
+        case SAVE_QUES_ANSWER :
+            console.log('save question n anser reducer',action)
+            const qid= action.qid
+            const user=action.LoggedInUser
+            console.log('state is', state,)
+            return{
+                ...state,
+                [action.qid] : {
+                    ...state[action.qid],
+                    [action.answer]:{
+                        ...state[qid][user],
+                        votes: state[qid][action.answer].votes.concat([user]),
+                        text: state[qid][action.answer].text
+                    }
+
+                }
+                
+            }
+
         default :
             return state
     }

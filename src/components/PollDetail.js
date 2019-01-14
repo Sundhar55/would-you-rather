@@ -3,11 +3,14 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import {handleSaveQstnAndAnswer} from '../actions/questions'
+import WouldYou from './WouldYou'
 
 class PollDetail extends React.Component{
 
     state ={
-        selectedOption : 'option1'
+        selectedOption : 'optionOne',
+        qid : this.props.match.params.id
     }
     
     handleOptionChange=(e)=>{
@@ -18,14 +21,16 @@ class PollDetail extends React.Component{
 
     handleFormSubmit=(e)=>{
         e.preventDefault()
-        console.log(this.state.selectedOption)
-       
+        console.log('state ', this.state.selectedOption, this.state.qid)
+        const dispatch = this.props.dispatch
+        dispatch(handleSaveQstnAndAnswer(this.state.qid,this.state.selectedOption))
+        
     }
 
     render(){
         const {users,questions,userId} = this.props
         console.log('polldetail componenet ', this.props)
-        const id1 = this.props.match.params.id
+        const id1 = this.state.qid
 
         let question={}
         if(id1 !== undefined){
@@ -40,16 +45,17 @@ class PollDetail extends React.Component{
         
         return(
             //<Link className="poll" to={`/questions/${id1}`}>
-                <div className='center' >
+                <div className='polldetail' >
                     <h4 className="center">{question.author} asks: </h4>
                     <img src ={imgSrc}
                     alt={question.author} className='avatar'/>
                     <div className="poll-info">
                         <form onSubmit={this.handleFormSubmit}>
+                            <WouldYou />
                             <div className="radio">
                                 <label>
-                                    <input type="radio" value="option1"
-                                       checked={this.state.selectedOption === "option1"}
+                                    <input type="radio" value="optionOne"
+                                       checked={this.state.selectedOption === "optionOne"}
                                        onChange={this.handleOptionChange}
                                     /> {question.optionOne.text}
                                 </label>
@@ -60,8 +66,8 @@ class PollDetail extends React.Component{
                             
                             <div className="radio">
                                 <label>
-                                    <input type="radio" value="option2"
-                                       checked={this.state.selectedOption === "option2"}
+                                    <input type="radio" value="optionTwo"
+                                       checked={this.state.selectedOption === "optionTwo"}
                                        onChange={this.handleOptionChange}
                                     /> {question.optionTwo.text}
                                 </label>

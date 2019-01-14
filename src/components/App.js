@@ -20,9 +20,9 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Fragment>
-          
+            <Nav />
             <div className="container">
-                  <Nav />
+                  
                   { this.props.user !== undefined && 
                   
                   (<div>
