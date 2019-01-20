@@ -3,8 +3,18 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { users } from '../reducers/users';
 import Poll from './Poll'
+import LoginModal from './LoginModal';
+import {Button,Modal} from 'react-bootstrap'
+import ReactModalLogin from 'react-modal-login'
+
 
 class Dashboard extends React.Component{
+    state = {
+        modal : false
+    }
+    showModal(){
+        this.setState({modal:true})
+    }
     render(){
         const {user,questions} = this.props
         console.log('dashboard',this.props)
@@ -36,7 +46,7 @@ class Dashboard extends React.Component{
                             return (!(key in answers) && 
                             ( 
                                 
-                                <li key={key}>
+                                <li className='listitem' key={key}>
                                     <Poll id={key}  
                                         />
                                     
@@ -58,7 +68,20 @@ class Dashboard extends React.Component{
                        })
                     }
                 </ul>
+                    <button onClick={(e)=>this.showModal(e)}>show modal</button>
+                <div className="modal-container" style={{height:200}}>
+                    <Modal animation={this.state.modal}
+                        show={this.state.modal} aria-labelledby="contained-modal-title">
+                        <Modal.Header closeButton>
+                            <Modal.Title id="contained-modal-title">
+                                CM
+                            </Modal.Title>
+                        </Modal.Header>
+                    </Modal>
+                    
+                </div>
             </div>
+      
             
         )
     }

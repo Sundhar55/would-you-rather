@@ -5,12 +5,14 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {handleSaveQstnAndAnswer} from '../actions/questions'
 import WouldYou from './WouldYou'
+import Results from './Results';
 
 class PollDetail extends React.Component{
 
     state ={
         selectedOption : 'optionOne',
-        qid : this.props.match.params.id
+        qid : this.props.match.params.id,
+        submit : false
     }
     
     handleOptionChange=(e)=>{
@@ -24,6 +26,8 @@ class PollDetail extends React.Component{
         console.log('state ', this.state.selectedOption, this.state.qid)
         const dispatch = this.props.dispatch
         dispatch(handleSaveQstnAndAnswer(this.state.qid,this.state.selectedOption))
+        this.setState({submit : true})
+
         
     }
 
@@ -45,38 +49,50 @@ class PollDetail extends React.Component{
         
         return(
             //<Link className="poll" to={`/questions/${id1}`}>
-                <div className='polldetail' >
-                    <h4 className="center">{question.author} asks: </h4>
-                    <img src ={imgSrc}
-                    alt={question.author} className='avatar'/>
-                    <div className="poll-info">
-                        <form onSubmit={this.handleFormSubmit}>
-                            <WouldYou />
-                            <div className="radio">
-                                <label>
-                                    <input type="radio" value="optionOne"
-                                       checked={this.state.selectedOption === "optionOne"}
-                                       onChange={this.handleOptionChange}
-                                    /> {question.optionOne.text}
-                                </label>
-                            </div>
-                            <div>
-                                <label className="label">OR</label>
-                            </div>
+                <div>
+                {!this.state.submit && (
+                    <div className="container">
+                    <div className='polldetail' >
+                        <h4 className="center">{question.author} asks: </h4>
+                        <img src ={imgSrc}
+                        alt={question.author} className='avatar'/>
+                        <div className="poll-info">
+                            <form onSubmit={this.handleFormSubmit}>
+                                <WouldYou />
+                                <div className="radio">
+                                    <label>
+                                        <input type="radio" value="optionOne"
+                                        checked={this.state.selectedOption === "optionOne"}
+                                        onChange={this.handleOptionChange}
+                                        /> {question.optionOne.text}
+                                    </label>
+                                </div>
+                                <div>
+                                    <label className="label">OR</label>
+                                </div>
+                                
+                                <div className="radio">
+                                    <label>
+                                        <input type="radio" value="optionTwo"
+                                        checked={this.state.selectedOption === "optionTwo"}
+                                        onChange={this.handleOptionChange}
+                                        /> {question.optionTwo.text}
+                                    </label>
+                                </div>
+                                <button className='btn' type='submit' value="Submit">Submit</button>              
                             
-                            <div className="radio">
-                                <label>
-                                    <input type="radio" value="optionTwo"
-                                       checked={this.state.selectedOption === "optionTwo"}
-                                       onChange={this.handleOptionChange}
-                                    /> {question.optionTwo.text}
-                                </label>
-                            </div>
-                            <button className='btn' type='submit' value="Submit">Submit</button>              
-                        
-                        </form>
-                        
+                            </form>
+                            
+                        </div>
                     </div>
+                </div>
+                )}
+                
+                {this.state.submit &&(
+                    <Results qid={this.state.qid} author={question.author} LoggedInUser={this.props.userId}
+                    image = {imgSrc}/>
+                )}
+                
                 </div>
             //</Link>
             

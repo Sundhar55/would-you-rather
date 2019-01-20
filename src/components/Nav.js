@@ -9,13 +9,13 @@ export default function Nav(){
             <div className="collapse navbar-collapse" 
                 id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
-                    <li>
+                    <li className="navbaritem">
                         <NavLink to='/' exact activeClassName='active'>Home</NavLink>
                     </li>
-                    <li>
+                    <li className="navbaritem" >
                         <NavLink to='/newquestion' activeClassName='active'>New Question</NavLink>
                     </li>
-                    <li>
+                    <li className="navbaritem">
                         <NavLink to='/leaderboard' activeClassName='active'>LeaderBoard</NavLink>
                     </li>
                 </ul>
