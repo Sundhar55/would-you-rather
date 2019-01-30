@@ -8,7 +8,8 @@ class LoginModal extends React.Component {
     super(props);
     this.state = {
       modal: false,
-      dropdownOpen : false
+      dropdownOpen : false,
+      user: null
     };
 
     this.toggle = this.toggle.bind(this);
@@ -19,31 +20,43 @@ class LoginModal extends React.Component {
       modal: !this.state.modal
     });
   }
-
+  toggleDropDown(){
+     //  console.log(this)
+     //  this.setState({dropdownOpen: !this.state.dropdownOpen})
+       //this.setState((prevState) =>({dropdownOpen: !prevState.dropdownOpen}))
+   }
   render() {
       const closeBtn = <button className="close" onClick={this.toggle}>&times;</button>;
-
+      const users = this.props.users
+      const keys= Object.keys(users)
+      const i=0
+    console.log('modal usrs, ', keys)
       return (
       <div>
         <Button color="info" onClick={this.toggle}>{this.props.buttonLabel}</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle} close={closeBtn}>Modal title</ModalHeader>
+          <ModalHeader toggle={this.toggle} close={closeBtn}>Welcome to the Would You Rather App
+
+          </ModalHeader>
           <ModalBody>
-              <div>
+              <div className="center">
                   
-                <span>Login with one of the below options </span>
-                <Image src="/images/app.jpg" fluid />
-                </div>
-            <Dropdown isOpen={this.state.dropdownOpen}>
+                <span>Please sign in to continue </span> 
+                <Image src="/images/app.jpg"  responsive  style={{display:"block"}} />
+                
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>
                 <DropdownToggle caret>
-                    Login options
+                    Sign in 
                 </DropdownToggle>
                 <DropdownMenu>
-                    <DropdownItem>user1</DropdownItem>
-                    <DropdownItem>user2</DropdownItem>
-                    <DropdownItem>user3</DropdownItem>
+
+                    {keys.map((id)=>(
+                       <DropdownItem key={id} tabindex={i+1}>{users[id].name}</DropdownItem> 
+                    ))}
+
                 </DropdownMenu>
             </Dropdown>
+            </div>
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}

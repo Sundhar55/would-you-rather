@@ -35,3 +35,13 @@ export function saveQuestionAnswer(authedUser,qid,answer){
 }
 
 
+
+
+export function logInUser(userid){
+    console.log('in login ', userid)
+    return new Promise((res, rej) => {
+        res({id : userid})
+      })
+}
+
+

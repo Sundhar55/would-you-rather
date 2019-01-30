@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import {formatQuestion} from '../utils/_DATA'
 import {handleAddQuestion} from '../actions/questions'
 import {Redirect} from 'react-router-dom'
+import Login from './Login';
+import Dashboard from './Dashboard';
 
 class NewQuestion extends React.Component{
     constructor(props){
@@ -38,36 +40,48 @@ class NewQuestion extends React.Component{
     }
     render(){
         const toHome = this.state.toHome
+        console.log('newqstion comp', this.props.LoggedInUser)
         if(toHome){
             return <Redirect to='/' />
         }
+        if(this.props.LoggedInUser != null){
         return(
-            <div>
-            <h3 className='center'>Create your new question</h3>
-            <div className='question'>
-                <label > Complete the question :</label>
-                
-                <form className='new-question' action="" onSubmit={this.handleSubmit}>
-                <h4 >Would you rather...</h4>   
-                    <input type="text" name="optionA" 
-                        value={this.state.option1}
-                        placeholder="optionA text"
-                        onChange={this.handleOption1Change}
-                        id="optionA"/>
-                            OR
-                    <input type="text" name="optionB" 
-                        value={this.state.option2}
-                        placeholder="optionB text"
-                        onChange={this.handleOption2Change}
-                        id="optionB"/>
-                    <button className='btn' type='submit' value="Submit">submit</button>
-                </form>
-            
-            </div>
-               
-            </div>
-        )
+                this.props.LoggedInUser === null 
+                ? alert('kindly login2')
+                :   <div>
+                        <h3 className='center'>Create your new question</h3>
+                        <div className='question'>
+                            <label > Complete the question :</label>
+                            
+                            <form className='new-question' action="" onSubmit={this.handleSubmit}>
+                            <h4 >Would you rather...</h4>   
+                                <input type="text" name="optionA" 
+                                    value={this.state.option1}
+                                    placeholder="optionA text"
+                                    onChange={this.handleOption1Change}
+                                    id="optionA"/>
+                                        OR
+                                <input type="text" name="optionB" 
+                                    value={this.state.option2}
+                                    placeholder="optionB text"
+                                    onChange={this.handleOption2Change}
+                                    id="optionB"/>
+                                <button className='btn' type='submit' value="Submit">submit</button>
+                            </form>
+                        
+                        </div>
+                    </div>
+            )
+        }else{
+            return(
+            <Dashboard />)
+        }
+        
     }
 }
-
-export default connect()(NewQuestion)
+function mapStateToProps({LoggedInUser}){
+    return {
+      LoggedInUser:  LoggedInUser
+    }
+}
+export default connect(mapStateToProps)(NewQuestion)
