@@ -1,16 +1,20 @@
 import React from 'react'
 import {Well,Grid,Row,Col,Media} from 'react-bootstrap'
+import {FaTrophy} from 'react-icons/fa'
 
 export default function Scorecard(props){
     return(
-        <div>
+        <div className="group">
+        <div className="rank">
         <Row className="show-grid">
                     <Col xs={3} md={2} align="middle">
+                    
+                    <FaTrophy className="trophy-svg"></FaTrophy>
                     <img src ="/images/sarah.jpg"
                                 alt="sarahedo" className='avatar'/>
                     </Col>
                     <Col xs={7} md={5}>
-                        <h4>{props.author}</h4>
+                        <h5>{props.author}</h5>
                         <div className="row">  Anwered Questions</div>
                         <div className="row">  Created Questions</div>
                     </Col>
@@ -28,6 +32,7 @@ export default function Scorecard(props){
                         
                     </Col>
                 </Row>
+            </div>
         </div>
     )
 }

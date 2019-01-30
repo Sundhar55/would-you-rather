@@ -111,7 +111,22 @@ class Dashboard extends React.Component{
                             }
                             </ul>
                         </TabPanel>
-                        <TabPanel>List 2</TabPanel>
+                        <TabPanel>
+                        <ul className='questionsList'>
+                            {
+                            Object.keys(questions).map((key)=>{
+                                    return ((key in answers) && 
+                                    ( 
+                                        <li className='listitem' key={key}>
+                                            <Poll id={key}  
+                                                />
+                                        </li>
+                                    ) )
+                                
+                            })
+                            }
+                            </ul>
+                        </TabPanel>
                     </Tabs>
                     </div>
                     

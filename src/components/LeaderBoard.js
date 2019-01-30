@@ -39,16 +39,16 @@ class LeaderBoard extends React.Component{
             <Grid>
 
            
-            <div className="leaderboard"> LeaderBoard
-                
+            
                 {
                     sortedUsers.map(item => (<Scorecard key={item.id} answered = {Object.keys(item.answers).length}
                         questions = {item.questions.length} author = {item.name}
                      />))
                 }
-                {/*<div className="polldetail"> */}
-                   {/* 
-                    <div className="row col-md-9">
+                
+                
+                {/*<div className="polldetail">         */}          
+                {/*    <div className="row col-md-9">
                         <div className=" float-left">
                             <img src ="/images/sarah.jpg"
                             alt="sarahedo" className='avatar'/>
@@ -68,7 +68,7 @@ class LeaderBoard extends React.Component{
                         </div>
                     </div>
                     */}
-                </div>
+            
             
             </Grid>
             
