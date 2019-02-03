@@ -21,16 +21,13 @@ class LoginModal extends React.Component {
     });
   }
   toggleDropDown(){
-     //  console.log(this)
-     //  this.setState({dropdownOpen: !this.state.dropdownOpen})
-       //this.setState((prevState) =>({dropdownOpen: !prevState.dropdownOpen}))
+     
    }
   render() {
       const closeBtn = <button className="close" onClick={this.toggle}>&times;</button>;
       const users = this.props.users
       const keys= Object.keys(users)
       const i=0
-    console.log('modal usrs, ', keys)
       return (
       <div>
         <Button color="info" onClick={this.toggle}>{this.props.buttonLabel}</Button>

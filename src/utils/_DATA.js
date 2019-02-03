@@ -150,7 +150,6 @@ export function formatQuestion ( optionOneText, optionTwoText, author )
 }
 
 export function _saveQuestion (question) {
-  console.log('in save questn api', question)
   return new Promise((res, rej) => {
     const authedUser = question.author;
    // const formattedQuestion = formatQuestion(question);
@@ -169,14 +168,12 @@ export function _saveQuestion (question) {
           questions: users[authedUser].questions.concat([formattedQuestion.id])
         }
       }
-      console.log('after adding question',questions,users, formattedQuestion)
       res(formattedQuestion)
     }, 1000)
   })
 }
 
 export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
-  console.log(qid,authedUser,answer)
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {
@@ -200,7 +197,6 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           }
         }
       }
-      console.log('promise ', users,questions)
       res()
     }, 500)
   })

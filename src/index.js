@@ -5,6 +5,7 @@ import App from '../src/components/App';
 //import * as serviceWorker from './serviceWorker';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/react-bootstrap/dist/react-bootstrap.min.js'
+import 'semantic-ui-react/dist/commonjs/index.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'

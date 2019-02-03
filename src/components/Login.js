@@ -28,7 +28,6 @@ class Login extends React.Component{
     }
     
     toggleDropDown(){
-        //console.log(this , 'state')
         const ddvalue = this.state.dropdownOpen
         this.setState({
             dropdownOpen : !ddvalue
@@ -37,13 +36,11 @@ class Login extends React.Component{
 
     select(event){
         const selectedItem = (event.target)
-        console.log('sid',selectedItem.id)
         this.setState({dropdownValue : selectedItem.id})
     }
     
     handleClick(e){
         const val = this.state.dropdownValue
-        console.log('handlesubmit',val)
         this.props.dispatch(handleLogin(val))
     }
     render(){

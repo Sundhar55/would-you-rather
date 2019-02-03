@@ -14,7 +14,6 @@ class Poll extends React.Component{
         
     }
     render(){
-        console.log('props in poll ',this.props)
         const id1 = this.props.match.params.id
         let question = {}
         let id = this.props.id
@@ -23,13 +22,14 @@ class Poll extends React.Component{
         }else{
             question = this.props.questions[id]
         }
-        console.log('id in oll ' , id1)
         
         var imgSrc = "/images/tyler.jpg"
         if(question.author === "sarahedo"){
-            imgSrc = "/images/sarah.jpg"
+            imgSrc = "/images/sarah2.jpg"
+        }else if (question.author === "johndoe"){
+            imgSrc="/images/beard.jpg"
         }
-        console.log("question in poll s", question)
+        
         return(
             <div className="poll">
                 <img src ={imgSrc}
@@ -48,8 +48,8 @@ class Poll extends React.Component{
                             
                         </div>
                         {id1 !== undefined 
-                        ?  <button className ="btn" id="submitPoll" onClick={(e)=>this.submitPoll(e)}>Submit</button>                          
-                        :  <button className ="btn" id="viewPoll" onClick={(e)=>this.handleClick(e,question.id)}>view poll</button>
+                        ?  <button className ="btn btn-primary" id="submitPoll" onClick={(e)=>this.submitPoll(e)}>Submit</button>                          
+                        :  <button className ="btn btn-primary" id="viewPoll" onClick={(e)=>this.handleClick(e,question.id)}>view poll</button>
                         }
                     </div>
                 </div>
@@ -59,8 +59,6 @@ class Poll extends React.Component{
     }
 }
 function mapStateToProps({users,questions,LoggedInUser},{id}){
-    console.log('id is ', id, questions)
-    console.log('userId ', LoggedInUser)
     return{
         questions : questions,
         id : id,

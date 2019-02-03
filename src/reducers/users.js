@@ -33,10 +33,7 @@ export function LoggedInUser (state = null, action){
     switch(action.type){
         case SET_AUTHED_USER:
             return action.id
-            
         case LOG_IN_USER:
-        console.log('Logged in user', action)
-    
             return action.id
         default :
             return state

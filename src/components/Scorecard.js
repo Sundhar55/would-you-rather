@@ -3,14 +3,28 @@ import {Well,Grid,Row,Col,Media} from 'react-bootstrap'
 import {FaTrophy} from 'react-icons/fa'
 
 export default function Scorecard(props){
+    let trophyColor = 'trophy-svg'
+    if(props.rank === 2)
+        trophyColor = 'trophy-silver-svg'
+    else if (props.rank > 2 )
+    {
+        trophyColor = 'trophy-black-svg'
+    }
+    var imgSrc = "/images/tyler.jpg"
+        if(props.authorId === "sarahedo"){
+            imgSrc = "/images/sarah2.jpg"
+        }else if (props.authorId === "johndoe"){
+            imgSrc="/images/beard.jpg"
+        }
+        
     return(
         <div className="group">
         <div className="rank">
         <Row className="show-grid">
                     <Col xs={3} md={2} align="middle">
                     
-                    <FaTrophy className="trophy-svg"></FaTrophy>
-                    <img src ="/images/sarah.jpg"
+                    <FaTrophy className={trophyColor}></FaTrophy>
+                    <img src ={imgSrc}
                                 alt="sarahedo" className='avatar'/>
                     </Col>
                     <Col xs={7} md={5}>

@@ -24,21 +24,14 @@ export function saveQuestion(question){
 }
 
 export function saveQuestionAnswer(authedUser,qid,answer){
-    console.log('in api save QA',qid,authedUser,answer)
     return _saveQuestionAnswer({authedUser,qid,answer})
-    // return Promise([
-    //     _saveQuestionAnswer(questionId,authedUser,answer)
-    // ]).then(([users,questions])=>({
-    //     users,
-    //     questions
-    // }))
+    
 }
 
 
 
 
 export function logInUser(userid){
-    console.log('in login ', userid)
     return new Promise((res, rej) => {
         res({id : userid})
       })

@@ -21,10 +21,8 @@ export default function users(state={},action){
             }
         
         case SAVE_QUES_ANSWER :
-            console.log('save question n anser reducer',action)
             const qid= action.qid
             const user=action.LoggedInUser
-            console.log('state is', state,)
             return{
                 ...state,
                 [action.qid] : {
