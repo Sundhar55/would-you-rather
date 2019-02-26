@@ -21,13 +21,13 @@ export default function Scorecard(props){
         <div className="group">
         <div className="rank">
         <Row className="show-grid">
-                    <Col xs={3} md={2} align="middle">
+                    <Col xs={3} md={3} align="left">
                     
                     <FaTrophy className={trophyColor}></FaTrophy>
                     <img src ={imgSrc}
                                 alt="sarahedo" className='avatar'/>
                     </Col>
-                    <Col xs={7} md={5}>
+                    <Col xs={7} md={7}>
                         <h5>{props.author}</h5>
                         <div className="row">  Anwered Questions</div>
                         <div className="row">  Created Questions</div>
@@ -35,7 +35,7 @@ export default function Scorecard(props){
                     <Col xs={2} md={2}>
                         
                             <div className="row">
-                                Score
+                                <p className="text">Score</p>
                             </div>
                             <div className="row" id="answered">
                                 {props.answered}

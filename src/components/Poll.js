@@ -24,10 +24,15 @@ class Poll extends React.Component{
         }
         
         var imgSrc = "/images/tyler.jpg"
+        var authorName = ''
         if(question.author === "sarahedo"){
             imgSrc = "/images/sarah2.jpg"
+            authorName = this.props.users[question.author]["name"]
         }else if (question.author === "johndoe"){
             imgSrc="/images/beard.jpg"
+            authorName = this.props.users[question.author]["name"]
+        }else{
+            authorName = this.props.users[question.author]["name"]
         }
         
         return(
@@ -36,7 +41,7 @@ class Poll extends React.Component{
                     alt={question.author} className='avatar'/>
                     
                 <div className="poll-info">
-                    <h4 className="center">{question.author} asks: </h4>
+                    <h4 className="center">{authorName} asks: </h4>
                     <WouldYou />
                     <div className="">
                         <div className = "center">
@@ -62,7 +67,8 @@ function mapStateToProps({users,questions,LoggedInUser},{id}){
     return{
         questions : questions,
         id : id,
-        userId : LoggedInUser
+        userId : LoggedInUser,
+        users : users
 
     }
 

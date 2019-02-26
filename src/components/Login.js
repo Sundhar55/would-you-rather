@@ -57,7 +57,7 @@ class Login extends React.Component{
                     </CardBody>
                     <Image src="/images/app.jpg"  alt="wouldyou" className="center-image" rounded/>
                     <CardBody>
-                        <p className="title">Sign in</p>
+                        <p className="sign-in">Sign in</p>
                         <Dropdown className="center" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>
                             <DropdownToggle caret>
                                {this.state.dropdownValue === null ? i : this.state.dropdownValue }  
@@ -70,7 +70,7 @@ class Login extends React.Component{
 
                             </DropdownMenu>
                         </Dropdown>
-                        <Button className="center" color='info' onClick={this.handleClick} >Sign in</Button>
+                        <Button className="center" color='primary' onClick={this.handleClick} >Sign in</Button>
                     </CardBody>
                 
                 </Card>

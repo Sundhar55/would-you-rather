@@ -59,7 +59,7 @@ class NewQuestion extends React.Component{
                 <div className="container">
                         
                         <div className='question'>
-                            <div className = "form-header"><h3 className='center'>Create your new question</h3></div>
+                            <div className=""><h3 className='center'>Create your new question</h3></div>
                             <label className="form-label" > Complete the question :</label>
                             <form className='new-question' action="" onSubmit={this.handleSubmit}>
                             <h4 >Would you rather...</h4>   

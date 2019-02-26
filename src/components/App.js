@@ -11,10 +11,11 @@ import NewQuestion from './NewQuestion'
 import LoadingBar from 'react-redux-loading';
 class App extends Component {
   render() {
+    
     return (
       <BrowserRouter>
         <Fragment>
-        <Navigation LoggedInUser={this.props.LoggedInUser} />
+        <Navigation LoggedInUser={this.props.LoggedInUser}/>
             
             <div className="container">
             
@@ -22,7 +23,7 @@ class App extends Component {
                     (<div>
                       <Route path='/' exact component={Dashboard} />
                       <Route path='/leaderboard' component={LeaderBoard} />
-                      <Route path='/newquestion' component={NewQuestion} />
+                      <Route path='/add' component={NewQuestion} />
                       <Route path='/questions/:id' component={PollDetail} />
                     </div>)
                     
@@ -38,6 +39,8 @@ class App extends Component {
 function mapStateToProps({users, questions,LoggedInUser}){
   return {
     LoggedInUser : LoggedInUser,
+    users : users
+    
     
   }
 }
