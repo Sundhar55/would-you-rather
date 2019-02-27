@@ -1,7 +1,7 @@
 //inside src/components/Dashboard.js
 import React from 'react'
 import {connect} from 'react-redux'
-import { users } from '../reducers/users';
+//import { users } from '../reducers/users';
 import { handleInitialData } from '../actions/shared'
 
 import Poll from './Poll'
@@ -40,6 +40,34 @@ class Dashboard extends React.Component{
                      : {}
         const totqstn = (Object.keys(questions).length )
         const totanswer = (Object.keys(answers).length )
+
+        function compareValues(key, order='asc') {
+            return function(a, b) {
+              if(!a.hasOwnProperty(key) || 
+                 !b.hasOwnProperty(key)) {
+                  return 0; 
+              }
+              
+              const varA = a[key];
+              const varB = b[key];
+                
+              let comparison = 0;
+              if (varA > varB) {
+                comparison = 1;
+              } else if (varA < varB) {
+                comparison = -1;
+              }
+              return (
+                (order === 'desc') ? 
+                (comparison * -1) : comparison
+              );
+            };
+          }
+        
+          let sortedQstns = {}
+          const arrVals = Object.values(questions)
+          arrVals.sort((compareValues('timestamp','desc')))
+          arrVals.map(i => sortedQstns[i.id] = i)
         
     return(
             <div>
@@ -56,7 +84,7 @@ class Dashboard extends React.Component{
                             { totanswer !== totqstn ?
                                 <ul className='questionsList'>
                                 {
-                                    Object.keys(questions).map((key)=>{
+                                    Object.keys(sortedQstns).map((key)=>{
                                             return (!(key in answers) && 
                                             ( 
                                                 <li className='listitem' key={key}>
@@ -73,7 +101,7 @@ class Dashboard extends React.Component{
                         <TabPanel>
                         <ul className='questionsList'>
                             {
-                            Object.keys(questions).map((key)=>{
+                            Object.keys(sortedQstns).map((key)=>{
                                     return ((key in answers) && 
                                     ( 
                                         <li className='listitem' key={key}>

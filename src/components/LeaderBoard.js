@@ -1,16 +1,13 @@
 //src/components/LeaderBoard.js
 import React from 'react'
 import {connect} from 'react-redux'
-import {Well,Grid,Row,Col,Media} from 'react-bootstrap'
-import LoginModal from './LoginModal';
+import {Grid} from 'react-bootstrap'
 import Scorecard from './Scorecard'
 import Dashboard from './Dashboard';
 class LeaderBoard extends React.Component{
     render(){
         const users = this.props.users
         const userKeys = Object.keys(this.props.users)
-        const total =userKeys.map(item => ( Object.keys(users[item].answers).length + users[item].questions.length ))
-        const lastPosition = Object.keys(users)
 
         userKeys.forEach((value,index)=> {
             const tot = Object.keys(users[value].answers).length + users[value].questions.length

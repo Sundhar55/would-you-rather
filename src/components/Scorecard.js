@@ -1,5 +1,5 @@
 import React from 'react'
-import {Well,Grid,Row,Col,Media} from 'react-bootstrap'
+import {Row,Col} from 'react-bootstrap'
 import {FaTrophy} from 'react-icons/fa'
 
 export default function Scorecard(props){

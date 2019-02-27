@@ -1,6 +1,6 @@
 //inside src/components/Nav.js
 import React from 'react'
-import {NavLink, withRouter} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import { handleLogin } from '../actions/shared'
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux'
@@ -18,15 +18,14 @@ class Navigation extends React.Component{
     }
     render(){
         const user = this.props.LoggedInUser
-        const name = this.props.name
-        const oddEvent = (match, location) => {
+        /* const oddEvent = (match, location) => {
             if (!match) {
               return false
             }
             const eventID = parseInt(match.params.eventID)
             return !isNaN(eventID) && eventID % 2 === 1
           }
-        console.log('user', user)
+          */
         return(
                 <nav className='nav navbar navbar-expand-lg navbar-dark bg-dark'>
                 <div className="collapse navbar-collapse" 

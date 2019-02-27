@@ -8,7 +8,7 @@ import LeaderBoard from './LeaderBoard'
 import Navigation from './Nav'
 import PollDetail from './PollDetail'
 import NewQuestion from './NewQuestion'
-import LoadingBar from 'react-redux-loading';
+//import LoadingBar from 'react-redux-loading';
 class App extends Component {
   render() {
     

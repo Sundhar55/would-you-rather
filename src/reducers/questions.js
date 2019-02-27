@@ -13,8 +13,6 @@ export default function users(state={},action){
                 ...action.questions
             }
         case ADD_QUESTION :
-
-        const {question}=action.question
             return{
                 ...state,
                  [action.question.id]:action.question

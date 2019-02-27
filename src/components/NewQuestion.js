@@ -4,9 +4,9 @@ import {connect} from 'react-redux'
 import {formatQuestion} from '../utils/_DATA'
 import {handleAddQuestion} from '../actions/questions'
 import {Redirect} from 'react-router-dom'
-import Login from './Login';
+//import Login from './Login';
 import Dashboard from './Dashboard';
-import {Card} from 'semantic-ui-react'
+//import {Card} from 'semantic-ui-react'
 
 class NewQuestion extends React.Component{
     constructor(props){
@@ -30,9 +30,7 @@ class NewQuestion extends React.Component{
     handleSubmit=(e)=>{
         e.preventDefault()
         const options = this.state;
-        if(options.option1 === "" || options.option2 === ""){
-            
-        }
+        
         const question = formatQuestion(options.option1,options.option2,this.props.LoggedInUser)
         if(options.option1 === "" || options.option2 === ""){
             this.setState({error : true})

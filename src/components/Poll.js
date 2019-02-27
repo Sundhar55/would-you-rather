@@ -1,6 +1,6 @@
 //src/components/Poll.js
 import React from 'react'
-import {Link, withRouter} from 'react-router-dom'
+import { withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import WouldYou from './WouldYou'
 

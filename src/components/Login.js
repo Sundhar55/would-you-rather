@@ -1,7 +1,7 @@
 //src/components/Login.js
 
 import React from 'react'
-import {Card,Dropdown,DropdownItem,DropdownMenu,DropdownToggle,CardBody, CardTitle,CardText,Row,Button} from 'reactstrap'
+import {Card,Dropdown,DropdownItem,DropdownMenu,DropdownToggle,CardBody, CardTitle,Button} from 'reactstrap'
 import {Image} from 'react-bootstrap'
 import {connect} from 'react-redux'
 import { handleLogin } from '../actions/shared'

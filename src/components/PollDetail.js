@@ -2,11 +2,11 @@
 
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 import {handleSaveQstnAndAnswer} from '../actions/questions'
 import WouldYou from './WouldYou'
 import Results from './Results';
 import Dashboard from './Dashboard';
+import Error from './Error'
 
 class PollDetail extends React.Component{
 
@@ -34,17 +34,22 @@ class PollDetail extends React.Component{
         const {users,questions,userId} = this.props
         const id1 = this.state.qid
 
-        console.log('users', users , 'qstns', questions)
-
         let question={}
         if(id1 !== undefined){
             question = questions[id1]
         }
 
+        if(!userId){
+            return <Dashboard />
+        }
+        if(!question){
+            return <Error />
+        }
+
         var imgSrc = "/images/tyler.jpg"
         let authorName = ''
         
-        if( typeof(question)  !== undefined ){
+        if( typeof(question)  !== "undefined" ){
             if(question.author === "sarahedo"){
                 imgSrc = "/images/sarah2.jpg"
                 authorName = users[question.author]["name"]
@@ -58,8 +63,6 @@ class PollDetail extends React.Component{
         }
 
         //setting up validation to show result or polling option
-        const optionOneVotes = question.optionOne.votes.length
-        const optionTwoVotes = question.optionTwo.votes.length
         let showResult = false 
         if(question.optionOne.votes.length > 0 && question.optionOne.votes.includes(userId)){
             showResult = true 

@@ -37,3 +37,7 @@ can install other dependencies using the above as a sample.
 
 To run the project in local use the below command once u install the packages mentioned above using
 the commands specified.
+
+npm start
+
+once the above command is run, you can have the project running in your local environment
